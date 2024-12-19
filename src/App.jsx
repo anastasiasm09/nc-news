@@ -6,7 +6,8 @@ import Articles from './components/Articles'
 import Topics from './components/Topics'
 import Account from './components/Account'
 import ArticleById from './components/ArticleById'
-
+import Comments from './components/Comments'
+import VoteOnTheArticle from './components/VoteOnTheArticle'
 
 
 function App() {
