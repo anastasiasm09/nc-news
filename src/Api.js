@@ -28,5 +28,11 @@ function SetVote(article_id, voteChange) {
     })
 }
 
+function PostANewComment(article_id, comment) {
+    return api.post(`/articles/${article_id}/comments`, comment).then(({ data }) => {
+        return data;
+    })
+}
 
-export { ApiArticles, GetArticleById, GetCommentsByArticle, SetVote};
+
+export { ApiArticles, GetArticleById, GetCommentsByArticle, SetVote, PostANewComment};

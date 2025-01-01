@@ -18,6 +18,7 @@ function App() {
     <main>
       <Header className="title" title={appTitle} />
       <Routes>
+        <Route path='/' element={<Search />} />
         <Route path='/articles' element={<Articles />} />
         <Route path='/topics' element={<Topics />} />
         <Route path='/my-accaunt' element={<Account />} />

@@ -3,20 +3,30 @@ import { ApiArticles } from "../Api"
 import { Link } from "react-router-dom";
 
 function Articles() {
-
     const [articles, setArticles] = useState();
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        ApiArticles().then((pendingArticles) => {
+        ApiArticles()
+        .then((pendingArticles) => {
             setArticles(pendingArticles.articles)
             setIsLoading(false)
+            setIsError(false)
+        })
+        .catch((err) => {
+            setIsLoading(false)
+            setIsError(true)
         })
     }, []);
 
     if (isLoading) {
         return <p>loading...</p>
     };
+
+    if (isError) {
+        return <p>Something went wrong! Try again later.</p>
+    }
 
     return (
         <ul className="article-list">

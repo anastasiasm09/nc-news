@@ -9,8 +9,6 @@ function Search() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        setSearch(search)
-        search("")
     }
 
 
