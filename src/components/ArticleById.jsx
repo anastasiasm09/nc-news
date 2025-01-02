@@ -39,7 +39,7 @@ function ArticleById() {
             <p>Topic: {article.topic}</p>
             <h2>{article.comment}</h2>
             <Comments article_id={article_id} />
-            <AddComment article_id={article.article_id} />
+            <AddComment article_id={article.article_id}/>
         </section>
     )
 };

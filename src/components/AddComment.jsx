@@ -5,9 +5,11 @@ import { data } from "react-router-dom";
 
 function AddComment({article_id}) {
     const [comment, setComment] = useState("");
+    const [pending, setPending] = useState(false);
  
     const handleSubmit = (event) => {
         event.preventDefault()
+        setPending(true)
 
         const newComment = {
             username: "jessjelly",
@@ -17,6 +19,7 @@ function AddComment({article_id}) {
         PostANewComment(article_id, newComment)
         .then(() => {
             setComment("");
+            setPending(false);
         });
     }
 
@@ -33,7 +36,9 @@ function AddComment({article_id}) {
                     onChange={handleCommentChange}
                     value={comment}>
                 </textarea>
-                <button type="submit">Submit</button>
+                <button disabled={comment.length === 0} type="submit">
+                    {pending ? "Submitting..." : "Submit" }
+                </button>
             </form>
         </section>
     )
