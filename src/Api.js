@@ -34,5 +34,11 @@ function PostANewComment(article_id, comment) {
     })
 }
 
+function DeleteComment(comment_id) {
+    return api.delete(`/comments/${comment_id}`).then(({ data }) => {
+        return data;
+    })
+}
 
-export { ApiArticles, GetArticleById, GetCommentsByArticle, SetVote, PostANewComment};
+
+export { ApiArticles, GetArticleById, GetCommentsByArticle, SetVote, PostANewComment, DeleteComment};
