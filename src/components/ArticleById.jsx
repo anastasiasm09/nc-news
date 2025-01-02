@@ -33,13 +33,13 @@ function ArticleById() {
             <img src={article.article_img_url} alt="" />
             <h2>{article.title}</h2>
             <h3>{article.votes}</h3>
-            <VoteOnTheArticle article={article}/>
+            <VoteOnTheArticle article={article} />
             <h3>{article.body}</h3>
             <p>Author: {article.author}</p>
             <p>Topic: {article.topic}</p>
             <h2>{article.comment}</h2>
             <Comments article_id={article_id} />
-            <AddComment article_id={article.article_id}/>
+            <AddComment article_id={article.article_id} />
         </section>
     )
 };
