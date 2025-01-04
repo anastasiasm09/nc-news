@@ -18,9 +18,9 @@ function AddComment({article_id}) {
 
         PostANewComment(article_id, newComment)
         .then(() => {
-            setComment("");
-            setPending(false);
-        });
+            setComment("")
+            setPending(false)
+        })
     }
 
     const handleCommentChange = (event) => {

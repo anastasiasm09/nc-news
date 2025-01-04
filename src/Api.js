@@ -40,5 +40,25 @@ function DeleteComment(comment_id) {
     })
 }
 
+function ApiTopics() {
+    return api.get("/topics").then((data) => {
+        return data;
+    })
+}
 
-export { ApiArticles, GetArticleById, GetCommentsByArticle, SetVote, PostANewComment, DeleteComment};
+function GetArticleByTopic(topic) {
+    return api.get(`/articles?topic=${topic}`).then(({ data }) => {
+        return data;
+    })
+}
+
+export { 
+    ApiArticles, 
+    GetArticleById,
+    GetCommentsByArticle, 
+    SetVote, 
+    PostANewComment, 
+    DeleteComment, 
+    ApiTopics,
+    GetArticleByTopic
+};

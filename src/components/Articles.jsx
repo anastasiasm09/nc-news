@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ApiArticles } from "../Api"
+import { ApiArticles, GetArticleByTopic } from "../Api"
 import { Link } from "react-router-dom";
 
 function Articles() {
@@ -8,16 +8,32 @@ function Articles() {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        ApiArticles()
-        .then((pendingArticles) => {
-            setArticles(pendingArticles.articles)
-            setIsLoading(false)
-            setIsError(false)
-        })
-        .catch((err) => {
-            setIsLoading(false)
-            setIsError(true)
-        })
+        const searchParams = new URLSearchParams(window.location.search);
+        const topic = searchParams.get('topic')
+
+        if (topic) {
+            GetArticleByTopic(topic)
+            .then((articles) => {
+                setArticles(articles.articles)
+                setIsLoading(false)
+                setIsError(false)
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                setIsError(true)
+            })
+        } else {
+            ApiArticles()
+            .then((articles) => {
+                setArticles(articles.articles)
+                setIsLoading(false)
+                setIsError(false)
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                setIsError(true)
+            })
+        }
     }, []);
 
     if (isLoading) {
@@ -29,7 +45,7 @@ function Articles() {
     }
 
     return (
-        <ul className="article-list">
+        <ul className="articles-list">
             {articles.map((article) => {
                 return (
                     <li key={article.article_id}>
