@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Search from './components/Search'
 import Articles from './components/Articles'
 import Topics from './components/Topics'
-import Account from './components/Account'
 import ArticleById from './components/ArticleById'
 import Comments from './components/Comments'
 import VoteOnTheArticle from './components/VoteOnTheArticle'
@@ -21,7 +20,6 @@ function App() {
         <Route path='/' element={<Search />} />
         <Route path='/articles' element={<Articles />} />
         <Route path='/topics' element={<Topics />} />
-        <Route path='/my-accaunt' element={<Account />} />
         <Route path='/articles/:article_id' element={<ArticleById />} />
       </Routes>
     </main>
